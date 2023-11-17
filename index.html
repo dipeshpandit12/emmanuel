@@ -41,8 +41,14 @@
     </div>
 
     <script>
-        // Set the target date and time in Nepal Standard Time (NST)
-        var targetDate = new Date("November 17, 2023 00:00:00 GMT+0545");
+        // Retrieve target date from localStorage or set a default value
+        var targetDate = localStorage.getItem('targetDate');
+        if (!targetDate) {
+            targetDate = new Date("November 17, 2023 00:00:00 GMT+0545");
+            localStorage.setItem('targetDate', targetDate);
+        } else {
+            targetDate = new Date(targetDate);
+        }
 
         function updateCountdown() {
             var currentDate = new Date();
